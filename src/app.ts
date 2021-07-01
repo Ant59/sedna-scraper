@@ -9,6 +9,8 @@ import { load } from 'cheerio';
 type ParsedUrl = ReturnType<typeof parseUrl>;
 type Sitemap = Record<string, string[]>;
 
+const unique = <T>(array: T[]): T[] => Array.from(new Set(array));
+
 export const extractLinks = async (url: ParsedUrl) => {
   const response = await fetch(url.href);
 
@@ -17,7 +19,7 @@ export const extractLinks = async (url: ParsedUrl) => {
     .map((_i, el) => document(el).attr('href'))
     .get();
 
-  return anchors
+  return unique(anchors)
     .map((link) => parseUrl(link))
     .filter((parsedLink) => parsedLink.resource === url.resource);
 };
