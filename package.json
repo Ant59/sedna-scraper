@@ -4,6 +4,15 @@
   "description": "Web crawler",
   "main": "dist/app.js",
   "license": "UNLICENSED",
+  "author": {
+    "name": "Antony Derham",
+    "email": "antony@derham.me",
+    "url": "antonyderham.me"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "test": "jest"
+  },
   "prettier": {
     "singleQuote": true
   },
